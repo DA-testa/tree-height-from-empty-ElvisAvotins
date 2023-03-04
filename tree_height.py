@@ -14,7 +14,7 @@ def compute_height(n, nodes):
             break
     stack = [root]
     while stack:
-        node = stack.pop()
+        node = stack.pop() 
         parent = nodes[node]
         if parent == -1:
             levels[node] = 1
