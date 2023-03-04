@@ -31,11 +31,12 @@ def main():
     script_dir = os.path.dirname(__file__)
     while True:
         file_or_input = input().strip().lower()
-        size = int(0) 
         arr = np.array([], dtype=np.int32)
         if file_or_input == "i":
             size = int(input())
             arr = np.fromstring(input().strip(), sep=' ', dtype=np.int32)
+            max_depth = compute_height(size, arr)
+            print(max_depth)
         if file_or_input == "f":
             file_name = input()
             if 'a' in file_name:
@@ -44,8 +45,10 @@ def main():
             with open(file_path) as f:
                 size = int(f.readline())
                 arr = np.fromstring(f.readline().strip(), sep=' ', dtype=np.int32)
-        max_depth = compute_height(size, arr)
-        print(max_depth)
+            max_depth = compute_height(size, arr)
+            print(max_depth)
+        else:
+            break
     pass
 
 # In Python, the default limit on recursion depth is rather low,
