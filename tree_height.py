@@ -1,12 +1,12 @@
-# python3
+# python 3
 import os
 import sys
 import threading
-#import numpy
+import numpy as np
 
 
 def compute_height(n, nodes):
-    levels = [0] * n
+    levels = np.zeros(n, dtype=np.int32)
     root = -1
     for i in range(n):
         if nodes[i] == -1:
@@ -24,31 +24,29 @@ def compute_height(n, nodes):
             if nodes[i] == node:
                 stack.append(i)
 
-    return max(levels)
-def main(): 
-    # implement input form keyboard and from files
-    # let user input file name to use, don't allow file names with letter a
-    # account for github input inprecision
+    return np.max(levels)
+
+
+def main():
     script_dir = os.path.dirname(__file__)
-    # print(script_dir)
     while True:
         file_or_input = input().strip().lower()
         size = int(0) 
-        arr = []
+        arr = np.array([], dtype=np.int32)
         if file_or_input == "i":
             size = int(input())
-            arr = list(map(int, input().split()))
+            arr = np.fromstring(input().strip(), sep=' ', dtype=np.int32)
         if file_or_input == "f":
-            file_name = (input())
+            file_name = input()
             if 'a' in file_name:
                 break
-            file_path = (script_dir + "/test/" + file_name)
+            file_path = os.path.join(script_dir, "test", file_name)
             with open(file_path) as f:
                 size = int(f.readline())
-                arr = list(map(int, f.readline().strip().split()))
+                arr = np.fromstring(f.readline().strip(), sep=' ', dtype=np.int32)
         max_depth = compute_height(size, arr)
         print(max_depth)
-        pass
+
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
@@ -56,4 +54,3 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
-# main()
