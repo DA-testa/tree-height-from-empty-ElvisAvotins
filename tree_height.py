@@ -31,21 +31,24 @@ def main():
     # account for github input inprecision
     script_dir = os.path.dirname(__file__)
     # print(script_dir)
-    file_or_input = input()
-    size = int(0) 
-    arr = []
-    if file_or_input == "I":
-        size = int(input())
-        arr = list(map(int, input().split()))
-    if file_or_input == "F":
-        file_name = (input())
-        file_path = (script_dir + "/test/" + file_name)
-        with open(file_path) as f:
-            size = int(f.readline())
-            arr = list(map(int, f.readline().strip().split()))
-    max_depth = compute_height(size, arr)
-    print(max_depth)
-    pass
+    while True:
+        file_or_input = input().strip().lower()
+        size = int(0) 
+        arr = []
+        if file_or_input == "i":
+            size = int(input())
+            arr = list(map(int, input().split()))
+        if file_or_input == "f":
+            file_name = (input())
+            if 'a' in file_name:
+                break
+            file_path = (script_dir + "/test/" + file_name)
+            with open(file_path) as f:
+                size = int(f.readline())
+                arr = list(map(int, f.readline().strip().split()))
+        max_depth = compute_height(size, arr)
+        print(max_depth)
+        pass
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
