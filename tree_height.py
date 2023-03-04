@@ -1,5 +1,5 @@
 # python3
-
+import os
 import sys
 import threading
 #import numpy
@@ -29,6 +29,8 @@ def main():
     # implement input form keyboard and from files
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
+    script_dir = os.path.dirname(__file__)
+    # print(script_dir)
     file_or_input = input()
     size = int(0)
     arr = []
@@ -37,7 +39,8 @@ def main():
         arr = list(map(int, input().split()))
     if file_or_input == "F":
         file_name = (input())
-        with open("test/" + file_name) as f:
+        file_path = (script_dir + "/test/" + file_name)
+        with open(file_path) as f:
             size = int(f.readline())
             arr = list(map(int, f.readline().strip().split()))
     max_depth = compute_height(size, arr)
