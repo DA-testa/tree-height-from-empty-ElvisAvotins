@@ -25,7 +25,7 @@ def compute_height(n, nodes):
                 stack.append(i)
 
     return max(levels)
-def main():
+def main(): 
     # implement input form keyboard and from files
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
