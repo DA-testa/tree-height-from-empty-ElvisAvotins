@@ -6,35 +6,42 @@ import threading
 
 
 def compute_height(n, nodes):
-    # Write this function
     levels = [0] * n
+    root = -1
     for i in range(n):
-        parent = nodes[i]
+        if nodes[i] == -1:
+            root = i
+            break
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        parent = nodes[node]
         if parent == -1:
-            levels[i] = 1
+            levels[node] = 1
         else:
-            levels[i] = levels[parent] + 1
-
+            levels[node] = levels[parent] + 1
+        for i in range(n):
+            if nodes[i] == node:
+                stack.append(i)
 
     return max(levels)
-    # Your code here
-
 def main():
-    size = int(input())
-    arr = list(map(int, input().split()))
-    max_depth = compute_height(size, arr)
-    print(max_depth)
-
-if __name__ == '__main__':
-    main()
     # implement input form keyboard and from files
-    
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
-    
-    # input number of elements
-    # input values in one variable, separate with space, split these values in an array
-    # call the function and output it's result
+    file_or_input = input()
+    size = int(0)
+    arr = []
+    if file_or_input == "I":
+        size = int(input())
+        arr = list(map(int, input().split()))
+    if file_or_input == "F":
+        file_name = (input())
+        with open("/home/elvis/RTU/Data_structure/lab2/tree-height-from-empty-ElvisAvotins/test/" + file_name) as f:
+            size = int(f.readline())
+            arr = list(map(int, f.readline().strip().split()))
+    max_depth = compute_height(size, arr)
+    print(max_depth)
     pass
 
 # In Python, the default limit on recursion depth is rather low,
@@ -43,5 +50,4 @@ if __name__ == '__main__':
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
-main()
-# print(numpy.array([1,2,3]))
+# main()
