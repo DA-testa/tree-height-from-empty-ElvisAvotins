@@ -32,7 +32,7 @@ def main():
     script_dir = os.path.dirname(__file__)
     # print(script_dir)
     file_or_input = input()
-    size = int(0)
+    size = int(0) 
     arr = []
     if file_or_input == "I":
         size = int(input())
