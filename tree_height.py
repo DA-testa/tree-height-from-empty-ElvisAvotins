@@ -37,7 +37,7 @@ def main():
         arr = list(map(int, input().split()))
     if file_or_input == "F":
         file_name = (input())
-        with open("/home/elvis/RTU/Data_structure/lab2/tree-height-from-empty-ElvisAvotins/test/" + file_name) as f:
+        with open("test/" + file_name) as f:
             size = int(f.readline())
             arr = list(map(int, f.readline().strip().split()))
     max_depth = compute_height(size, arr)
