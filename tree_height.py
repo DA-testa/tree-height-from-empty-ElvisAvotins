@@ -2,7 +2,7 @@
 import os
 import sys
 import threading
-import numpy as np
+import numpy as np 
 
 
 def compute_height(n, nodes):
@@ -46,7 +46,7 @@ def main():
                 arr = np.fromstring(f.readline().strip(), sep=' ', dtype=np.int32)
         max_depth = compute_height(size, arr)
         print(max_depth)
-
+    pass
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
@@ -54,3 +54,4 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
+main()
