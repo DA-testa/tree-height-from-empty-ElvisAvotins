@@ -30,6 +30,8 @@ def main():
         size = int(input())
         list_numbers = input().strip()
         arr = np.fromstring(list_numbers, dtype=int, sep=' ')
+        max_depth = compute_height(size, arr)
+        print(max_depth)
     if file_or_input == "f":
         file_name = input().strip()
         if 'a' in file_name:
@@ -38,8 +40,8 @@ def main():
         with open(file_path, encoding="utf8") as f:
             size = int(f.readline())
             arr = np.fromstring(f.readline().strip(), dtype=int, sep=' ')
-    max_depth = compute_height(size, arr)
-    print(max_depth)
+        max_depth = compute_height(size, arr)
+        print(max_depth)
     
 # sdfsdfs
 # In Python, the default limit on recursion depth is rather low,
