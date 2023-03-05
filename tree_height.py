@@ -32,7 +32,7 @@ def main():
         arr = np.fromstring(list_numbers, dtype=int, sep=' ')
         max_depth = compute_height(size, arr)
         print(max_depth)
-    if file_or_input == "f":
+    elif file_or_input == "f":
         file_name = input().strip()
         if 'a' in file_name:
             return
@@ -50,4 +50,4 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
-main()
+
