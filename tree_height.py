@@ -1,4 +1,4 @@
-import os
+# import os
 import sys
 import threading
 import numpy as np
@@ -21,7 +21,7 @@ def compute_height(size, nodes):
 
 
 def main(): 
-    script_dir = os.path.dirname(__file__)
+    # script_dir = os.path.dirname(__file__)
     size = 0
     file_or_input = input().strip().lower()
     arr = []
@@ -33,13 +33,13 @@ def main():
         file_name = input().strip()
         if 'a' in file_name:
             return
-        file_path = (script_dir + "/test/" + file_name)
+        file_path = ("test/" + file_name)
         with open(file_path) as f:
             size = int(f.readline())
             arr = np.fromstring(f.readline().strip(), dtype=int, sep=' ')
     max_depth = compute_height(size, arr)
     print(max_depth)
-    os._exit(0)
+    # os._exit(0)
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
