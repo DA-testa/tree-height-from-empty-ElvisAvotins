@@ -2,7 +2,7 @@ import sys
 import threading
 import numpy as np
 
-
+#asda
 def compute_height(size, nodes):
     levels = np.zeros(size, dtype=int)
     root_nodes = np.where(nodes == -1)[0]
